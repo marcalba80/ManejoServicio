@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-	<TextView  
+
+	<TextView
 	    android:layout_width="match_parent" 
 	    android:layout_height="wrap_content" 
 	    android:text="Utilización de Servicios" 
@@ -27,4 +28,22 @@
 			android:id="@+id/btnFin">
 		</Button>		
 	</LinearLayout>
+
+	<Button
+		android:id="@+id/button1"
+		android:layout_width="176dp"
+		android:layout_height="wrap_content"
+		android:text="Reproducir Sonido" />
+
+	<Button
+		android:id="@+id/button2"
+		android:layout_width="178dp"
+		android:layout_height="wrap_content"
+		android:text="Reproducir Cancion" />
+
+	<Button
+		android:id="@+id/button3"
+		android:layout_width="178dp"
+		android:layout_height="wrap_content"
+		android:text="Detener" />
 </LinearLayout>
