@@ -14,28 +14,26 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent){
 
-        String opcion = (String) intent.getExtras().get("opcion");
+        String opcion = (String) intent.getExtras().getString("opcion", "default");
 
-        if (opcion != null) {
-            switch (opcion) {
-                case "Iniciar Sonido":
-                    Toast.makeText(context, "Intent Recibido - Inicio reproduccion Sonido", Toast.LENGTH_LONG).show();
-                    service = new Intent(context, ElServicio.class);
-                    service.putExtra("opcion", context.getResources().getString(R.string.track));
-                    context.startService(service);
-                    break;
-                case "Iniciar Cancion":
-                    Toast.makeText(context, "Intent Recibido - Inicio reproduccion Cancion", Toast.LENGTH_LONG).show();
-                    service = new Intent(context, ElServicio.class);
-                    service.putExtra("opcion", context.getResources().getString(R.string.song));
-                    context.startService(service);
-                    break;
-                default:
-                    Toast.makeText(context, "Intent Recibido - Detencion reproduccion", Toast.LENGTH_LONG).show();
-                    service = new Intent(context, ElServicio.class);
-                    context.stopService(service);
-                    break;
-            }
+        switch (opcion) {
+            case "Iniciar Sonido":
+                Toast.makeText(context, "Intent Recibido - Inicio reproduccion Sonido", Toast.LENGTH_LONG).show();
+                service = new Intent(context, ElServicio.class);
+                service.putExtra("opcion", context.getResources().getString(R.string.track));
+                context.startService(service);
+                break;
+            case "Iniciar Cancion":
+                Toast.makeText(context, "Intent Recibido - Inicio reproduccion Cancion", Toast.LENGTH_LONG).show();
+                service = new Intent(context, ElServicio.class);
+                service.putExtra("opcion", context.getResources().getString(R.string.song));
+                context.startService(service);
+                break;
+            default:
+                Toast.makeText(context, "Intent Recibido - Detencion reproduccion", Toast.LENGTH_LONG).show();
+                service = new Intent(context, ElServicio.class);
+                context.stopService(service);
+                break;
         }
     }
 }

@@ -15,10 +15,5 @@
         </activity>
 		<service android:enabled="true" android:name=".ElServicio" />
         <receiver android:name=".MyReceiver"></receiver>
-        <receiver android:name=".MyScheduledReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.HEADSET_PLUG"></action>
-            </intent-filter>
-        </receiver>
     </application>
 </manifest>

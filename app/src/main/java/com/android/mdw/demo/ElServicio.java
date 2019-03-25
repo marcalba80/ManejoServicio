@@ -35,33 +35,32 @@ public class ElServicio extends Service {
 	public int onStartCommand(Intent intent, int flags, int startid) {
 		//Toast.makeText(this, R.string.iniserv, Toast.LENGTH_LONG).show();
 		String opcion;
-        try{ opcion = intent.getExtras().getString("opcion");}
+        try{ opcion = intent.getExtras().getString("opcion", "default");}
 		catch (NullPointerException e){opcion = "default";}
 
-		if (opcion != null) {
-			switch(opcion){
-				case "Iniciar Cancion":
-					Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
-					if (song != null && song.isPlaying())  {
-						song.stop();
-						song.release();
-					}
-					song = MediaPlayer.create(this, R.raw.song);
-					song.setLooping(true);
-					song.start();
-					break;
-				//case "Iniciar Sonido":
-				default:
-					Toast.makeText(this, "Servicio Sonido iniciado", Toast.LENGTH_LONG).show();
-					if (track != null && track.isPlaying())  {
-						track.stop();
-						track.release();
-					}
-					track = MediaPlayer.create(this, R.raw.train);
-					track.setLooping(true);
-					track.start();
-					break;
-			}
+
+		switch(opcion){
+			case "Iniciar Cancion":
+				Toast.makeText(this, "Servicio Cancion iniciado", Toast.LENGTH_LONG).show();
+				if (song != null && song.isPlaying())  {
+					song.stop();
+					song.release();
+				}
+				song = MediaPlayer.create(this, R.raw.song);
+				song.setLooping(true);
+				song.start();
+				break;
+			//case "Iniciar Sonido":
+			default:
+				Toast.makeText(this, "Servicio Sonido iniciado", Toast.LENGTH_LONG).show();
+				if (track != null && track.isPlaying())  {
+					track.stop();
+					track.release();
+				}
+				track = MediaPlayer.create(this, R.raw.train);
+				track.setLooping(true);
+				track.start();
+				break;
 		}
 		return startid;		
 	}	

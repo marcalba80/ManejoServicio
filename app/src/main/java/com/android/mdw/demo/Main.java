@@ -2,6 +2,7 @@ package com.android.mdw.demo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,8 +28,10 @@ public class Main extends Activity implements OnClickListener {
     btnSong.setOnClickListener(this);
     btnStop.setOnClickListener(this);
 
+    //in = new Intent(this, ElServicio.class);
     in = new Intent(this, MyReceiver.class);
-    //Intent intent = new Intent(this, MyReceiver.class);
+    IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+    this.registerReceiver(new MyScheduledReceiver(), filter);
     //sendBroadcast(intent);
   }
 
@@ -42,17 +45,12 @@ public class Main extends Activity implements OnClickListener {
         break;
       case R.id.button1:
         Toast.makeText(this, "Seleccionado Sonido", Toast.LENGTH_LONG).show();
-        //in = new Intent(this, ElServicio.class);
-        //in = new Intent(this, MyReceiver.class);
         in.putExtra("opcion", getResources().getString(R.string.track));
-        //System.out.println("button1");
         //startService(in);
         sendBroadcast(in);
         break;
       case R.id.button2:
         Toast.makeText(this, "Seleccionado Cancion", Toast.LENGTH_LONG).show();
-        //in = new Intent(this, ElServicio.class);
-        //in = new Intent(this, MyReceiver.class);
         in.putExtra("opcion", getResources().getString(R.string.song));
         //startService(in);
         sendBroadcast(in);
