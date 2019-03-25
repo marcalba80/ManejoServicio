@@ -7,4 +7,5 @@
     <string name="finaserv">Servicio Finalizado</string>
     <string name="track">Iniciar Sonido</string>
     <string name="song">Iniciar Cancion</string>
+    <string name="detener">Detener Reproduccion</string>
 </resources>

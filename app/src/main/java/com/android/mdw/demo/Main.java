@@ -26,6 +26,10 @@ public class Main extends Activity implements OnClickListener {
     btnTrack.setOnClickListener(this);
     btnSong.setOnClickListener(this);
     btnStop.setOnClickListener(this);
+
+    in = new Intent(this, MyReceiver.class);
+    //Intent intent = new Intent(this, MyReceiver.class);
+    //sendBroadcast(intent);
   }
 
   public void onClick(View src) {
@@ -38,19 +42,25 @@ public class Main extends Activity implements OnClickListener {
         break;
       case R.id.button1:
         Toast.makeText(this, "Seleccionado Sonido", Toast.LENGTH_LONG).show();
-        in = new Intent(this, ElServicio.class);
+        //in = new Intent(this, ElServicio.class);
+        //in = new Intent(this, MyReceiver.class);
         in.putExtra("opcion", getResources().getString(R.string.track));
-        System.out.println("button1");
-        startService(in);
+        //System.out.println("button1");
+        //startService(in);
+        sendBroadcast(in);
         break;
       case R.id.button2:
         Toast.makeText(this, "Seleccionado Cancion", Toast.LENGTH_LONG).show();
-        in = new Intent(this, ElServicio.class);
+        //in = new Intent(this, ElServicio.class);
+        //in = new Intent(this, MyReceiver.class);
         in.putExtra("opcion", getResources().getString(R.string.song));
-        startService(in);
+        //startService(in);
+        sendBroadcast(in);
         break;
       case R.id.button3:
-        stopService(in);
+        //stopService(in);
+        in.putExtra("opcion", getResources().getString(R.string.detener));
+        sendBroadcast(in);
         break;
     }
   }
